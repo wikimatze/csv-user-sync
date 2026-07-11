@@ -28,6 +28,7 @@ class CsvParserTest {
         val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
         tempCsvFile.writeText("wrong,mail\n1,foo@bar.de")
 
-        assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
+        val exception = assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
+        assertEquals("CSV parse error: expected header 'user_id,email' but was 'wrong,mail'", exception.message)
     }
 }
