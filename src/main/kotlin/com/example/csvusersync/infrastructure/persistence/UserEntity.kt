@@ -1,8 +1,8 @@
-package com.example.csvusersync.entity
+package com.example.csvusersync.infrastructure.persistence
 
 import jakarta.persistence.Column
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
 import jakarta.persistence.Table
 
 @Entity

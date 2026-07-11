@@ -1,12 +1,11 @@
-package com.example.csvusersync.service
+package com.example.csvusersync.application.service
 
-import com.example.csvusersync.repository.UserRepository
+import com.example.csvusersync.infrastructure.persistence.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.transaction.annotation.Transactional
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 @SpringBootTest
 @Transactional

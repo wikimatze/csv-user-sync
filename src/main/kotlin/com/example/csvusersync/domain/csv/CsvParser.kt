@@ -1,6 +1,6 @@
 package com.example.csvusersync.domain.csv
 
-import com.example.csvusersync.User
+import com.example.csvusersync.domain.model.User
 import org.springframework.stereotype.Component
 
 @Component
