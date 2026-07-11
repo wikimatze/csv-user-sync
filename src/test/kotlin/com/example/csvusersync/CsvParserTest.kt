@@ -7,7 +7,6 @@ import kotlin.io.path.createTempFile
 import kotlin.io.path.readLines
 import kotlin.io.path.writeText
 import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
 
 class CsvParserTest {
 
@@ -24,11 +23,38 @@ class CsvParserTest {
     }
 
     @Test
-    fun `should throw exception when parsing CSV file with incorrect data`() {
+    fun `should throw exception when parsing CSV file with wrong headline data`() {
         val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
         tempCsvFile.writeText("wrong,mail\n1,foo@bar.de")
 
         val exception = assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
         assertEquals("CSV parse error: expected header 'user_id,email' but was 'wrong,mail'", exception.message)
+    }
+
+    @Test
+    fun `should throw exception when parsing CSV file wrong data`() {
+        val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
+        tempCsvFile.writeText("user_id,mail\n1,foo@bar.de\n1,2,foo@bar.de")
+
+        val exception = assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
+        assertEquals("CSV parse error at line 3: expected 2 fields, but got 3", exception.message)
+    }
+
+    @Test
+    fun `should throw exception when parsing CSV file empty user_id data`() {
+        val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
+        tempCsvFile.writeText("user_id,mail\n,foo@bar.de")
+
+        val exception = assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
+        assertEquals("CSV parse error at line 2: user_id is blank", exception.message)
+    }
+
+    @Test
+    fun `should throw exception when parsing CSV file empty mail data`() {
+        val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
+        tempCsvFile.writeText("user_id,mail\n1,")
+
+        val exception = assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
+        assertEquals("CSV parse error at line 2: mail is blank", exception.message)
     }
 }
