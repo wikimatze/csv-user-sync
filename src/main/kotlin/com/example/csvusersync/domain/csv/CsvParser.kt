@@ -1,5 +1,6 @@
 package com.example.csvusersync.domain.csv
 
+import com.example.csvusersync.domain.model.Role
 import com.example.csvusersync.domain.model.User
 import org.springframework.stereotype.Component
 
@@ -33,6 +34,38 @@ class CsvParser {
             }
 
             User(userId, mail)
+        }
+    }
+
+
+    fun parseRoles(lines: List<String>): List<Role> {
+        require(lines.isNotEmpty()) {
+            throw CsvParseException("file is empty")
+        }
+
+        val header = lines.first()
+        require(header == "user_id,role") {
+            throw CsvParseException("expected header 'user_id,role' but was '$header'")
+        }
+
+        return lines.drop(1).mapIndexed { index, line ->
+            val parts = line.split(",")
+
+            require(parts.size == 2) {
+                throw CsvParseException("expected 2 fields, but got ${parts.size}", line = index + 2)
+            }
+
+            val userId = parts[0]
+            require(userId.isNotBlank()) {
+                throw CsvParseException("user_id is blank", line = index + 2)
+            }
+
+            val role = parts[1]
+            require(role.isNotBlank()) {
+                throw CsvParseException("role is blank", line = index + 2)
+            }
+
+            Role(userId, role)
         }
     }
 }
