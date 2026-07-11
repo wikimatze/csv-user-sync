@@ -10,7 +10,7 @@ import kotlin.test.assertEquals
 
 class CsvParserTest {
 
-    private val parser = CsvParser();
+    private val parser = CsvParser()
 
     @Test
     fun `parse return users from CSV file`() {

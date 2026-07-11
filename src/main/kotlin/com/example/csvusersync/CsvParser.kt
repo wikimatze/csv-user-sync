@@ -11,9 +11,6 @@ class CsvParser {
         return lines.drop(1).mapIndexed { index, line ->
             val parts = line.split(",")
 
-            println(parts)
-            println(parts.size)
-
             require(parts.size == 2) {
                 throw CsvParseException("expected 2 fields, but got ${parts.size}", line = index  + 2)
             }
@@ -22,7 +19,6 @@ class CsvParser {
             require(userId.isNotBlank()) {
                 throw CsvParseException("user_id is blank", line = index  + 2)
             }
-
 
             val mail = parts[1]
             require(mail.isNotBlank()) {
