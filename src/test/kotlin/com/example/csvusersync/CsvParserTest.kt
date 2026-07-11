@@ -23,6 +23,15 @@ class CsvParserTest {
     }
 
     @Test
+    fun `should throw exception for empty file parsing CSV`() {
+        val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
+        tempCsvFile.writeText("")
+
+        val exception = assertThrows<CsvParseException> { parser.parse(tempCsvFile.readLines()) }
+        assertEquals("CSV parse error: file is empty", exception.message)
+    }
+
+    @Test
     fun `should throw exception when parsing CSV file with wrong headline data`() {
         val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
         tempCsvFile.writeText("wrong,mail\n1,foo@bar.de")

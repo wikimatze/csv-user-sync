@@ -2,6 +2,9 @@ package com.example.csvusersync
 
 class CsvParser {
     fun parse(lines: List<String>): List<User> {
+        require(lines.isNotEmpty()) {
+            throw CsvParseException("file is empty")
+        }
 
         val header = lines.first()
         require(header == "user_id,mail") {
