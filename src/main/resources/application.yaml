@@ -1,3 +1,10 @@
 spring:
   application:
     name: csv-user-sync
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydatabase
+    password: secret
+    username: myuser
+  flyway:
+    enabled: true
+    baseline-on-migrate: true

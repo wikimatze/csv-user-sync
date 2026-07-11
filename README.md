@@ -22,14 +22,17 @@ all Java and project dependencies for me very nicely. Please note, that IntelliJ
 that plugin and want to explore things on my own.
 
 
-## Project generation steps
+## Project generation steps & dependencies
 
 - ![spring-boot-intellij-setup](doc/images/spring-boot-intellij-setup.png)
 - ![spring-boot-intellij-developer-tools](doc/images/spring-boot-intellij-developer-tools.png)
 - ![spring-boot-intellij-developer-web](doc/images/spring-boot-intellij-web.png)
 - ![spring-boot-intellij-developer-security](doc/images/spring-boot-intellij-security.png)
 - ![spring-boot-intellij-developer-sql](doc/images/spring-boot-intellij-sql.png)
+- [flyway](https://documentation.red-gate.com/flyway/getting-started-with-flyway): for migrations and table creation 
+
 
 ## Plan
 
-- Start writing a parser for the CSV file (in a TDD like approach) => [MR](https://github.com/wikimatze/csv-user-sync/pull/1)
+- adding a parser for the CSV file (in a TDD like approach) => [MR](https://github.com/wikimatze/csv-user-sync/pull/1)
+- adding DB migration, entity and repository
