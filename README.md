@@ -36,3 +36,8 @@ that plugin and want to explore things on my own.
 
 - adding a parser for the CSV file (in a TDD like approach) => [MR](https://github.com/wikimatze/csv-user-sync/pull/1)
 - adding DB migration, entity and repository
+
+
+## Useful commands
+
+- `./gradlew bootRun` ... start the application

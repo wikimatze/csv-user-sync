@@ -6,5 +6,4 @@ spring:
     password: secret
     username: myuser
   flyway:
-    enabled: true
-    baseline-on-migrate: true
+    baseline-on-migrate: true # make it explicit
