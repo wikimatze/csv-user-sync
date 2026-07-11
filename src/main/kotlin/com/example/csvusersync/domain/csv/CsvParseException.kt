@@ -1,4 +1,4 @@
-package com.example.csvusersync
+package com.example.csvusersync.domain.csv
 
 class CsvParseException(
     message: String,
