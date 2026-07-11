@@ -1,8 +1,8 @@
 # CSV user sync
 
-TLDR; A Spring Boot application that synchronizes `user accounts` and `roles` (permissions) from legacy SAP CSV exports into a PostgreSQL database. The service runs as a `daily scheduled job` and will be the foundation for a future modern authentication system using OpenID Connect. 
+TLDR; A Spring Boot application that synchronizes `user accounts` and `roles` (permissions) from legacy SAP CSV exports into a PostgreSQL database. The service runs as a `daily scheduled job` and will be the foundation for a future modern authentication system using OpenID Connect.
 
-This is my first Spring Boot application from scratch. So I'm better documenting 
+This is my first Spring Boot application from scratch. So I'm better documenting
 more than I should so that I can later refer to it later and learn from my mistakes.
 
 
@@ -32,4 +32,4 @@ that plugin and want to explore things on my own.
 
 ## Plan
 
-- Start writing a parser for the CSV file (in a TDD like approach)
+- Start writing a parser for the CSV file (in a TDD like approach) => [MR](https://github.com/wikimatze/csv-user-sync/pull/1)
