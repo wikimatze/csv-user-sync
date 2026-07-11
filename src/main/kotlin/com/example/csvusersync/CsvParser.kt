@@ -8,7 +8,7 @@ class CsvParser {
 
         val header = lines.first()
         require(header == "user_id,mail") {
-            throw CsvParseException("expected header 'user_id,email' but was '$header'")
+            throw CsvParseException("expected header 'user_id,mail' but was '$header'")
         }
 
         return lines.drop(1).mapIndexed { index, line ->
@@ -28,7 +28,7 @@ class CsvParser {
                 throw CsvParseException("mail is blank", line = index  + 2)
             }
 
-            User(parts[0], parts[1])
+            User(userId, mail)
         }
     }
 }
