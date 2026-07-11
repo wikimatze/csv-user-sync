@@ -1,6 +1,7 @@
 services:
   postgres:
     image: 'postgres:latest'
+    network_mode: host
     environment:
       - 'POSTGRES_DB=mydatabase'
       - 'POSTGRES_PASSWORD=secret'
