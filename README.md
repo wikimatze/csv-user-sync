@@ -40,4 +40,5 @@ that plugin and want to explore things on my own.
 
 ## Useful commands
 
+- `./gradlew build` ... build and install all the dependencies
 - `./gradlew bootRun` ... start the application

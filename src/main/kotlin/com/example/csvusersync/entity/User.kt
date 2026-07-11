@@ -13,7 +13,7 @@ class UserEntity(
     val userId: String,
 
     @Column(name = "mail")
-    val email: String
+    val mail: String
 ) {
     // JPA requires no-arg constructor
     protected constructor() : this("", "") {
