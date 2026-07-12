@@ -1,11 +1,12 @@
 package com.example.csvusersync.domain.csv
 
 import com.example.csvusersync.domain.model.User
+import org.hibernate.annotations.processing.Exclude
 import org.springframework.stereotype.Component
 
 @Component
 class CsvParser {
-    fun parse(lines: List<String>): List<User> {
+    fun parse(lines: List<String>, exclude: ((User) -> Boolean)? = null): List<User> {
         require(lines.isNotEmpty()) {
             throw CsvParseException("file is empty")
         }
@@ -15,7 +16,7 @@ class CsvParser {
             throw CsvParseException("expected header 'user_id,mail' but was '$header'")
         }
 
-        return lines.drop(1).mapIndexed { index, line ->
+        val users = lines.drop(1).mapIndexed { index, line ->
             val parts = line.split(",")
 
             require(parts.size == 2) {
@@ -34,5 +35,7 @@ class CsvParser {
 
             User(userId, mail)
         }
+
+        return users.filterNot( exclude ?: { false} )
     }
 }

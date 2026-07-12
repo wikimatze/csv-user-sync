@@ -35,7 +35,8 @@ that plugin and want to explore things on my own.
 ## Plan
 
 - adding a parser for the CSV file (in a TDD like approach) => [MR](https://github.com/wikimatze/csv-user-sync/pull/1)
-- adding DB migration, entity and repository
+- adding DB migration, entity and repository for the user and roles => [MR](https://github.com/wikimatze/csv-user-sync/pull/2)
+- adding generic filter for the parser => [MR](https://github.com/wikimatze/csv-user-sync/pull/3)
 
 
 ## Useful commands
