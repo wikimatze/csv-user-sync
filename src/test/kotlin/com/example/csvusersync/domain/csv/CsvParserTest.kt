@@ -21,6 +21,17 @@ class CsvParserTest {
         assertEquals("foo@bar.de", users[0].mail)
     }
 
+
+    @Test
+    fun `parse return filtered users from CSV file`() {
+        val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
+        tempCsvFile.writeText("user_id,mail\n1,foo@bar.de\n2,matze@wikimatze.de")
+
+        val users = parser.parse(tempCsvFile.readLines(), { user -> user.mail.endsWith("bar.de")})
+        assertEquals("2", users[0].user_id)
+        assertEquals("matze@wikimatze.de", users[0].mail)
+    }
+
     @Test
     fun `should throw exception for empty file parsing CSV`() {
         val tempCsvFile = createTempFile(prefix = "user", suffix = ".csv")
