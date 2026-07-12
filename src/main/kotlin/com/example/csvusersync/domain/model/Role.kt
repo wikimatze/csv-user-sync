@@ -1,6 +1,6 @@
 package com.example.csvusersync.domain.model
 
-data class User(
+data class Role(
     val user_id: String,
-    var mail: String,
+    val role: String,
 )
