@@ -29,13 +29,14 @@ that plugin and want to explore things on my own.
 - ![spring-boot-intellij-developer-web](doc/images/spring-boot-intellij-web.png)
 - ![spring-boot-intellij-developer-security](doc/images/spring-boot-intellij-security.png)
 - ![spring-boot-intellij-developer-sql](doc/images/spring-boot-intellij-sql.png)
-- [flyway](https://documentation.red-gate.com/flyway/getting-started-with-flyway): for migrations and table creation 
+- [flyway](https://documentation.red-gate.com/flyway/getting-started-with-flyway): for migrations and table creation
 
 
 ## Plan
 
 - adding a parser for the CSV file (in a TDD like approach) => [MR](https://github.com/wikimatze/csv-user-sync/pull/1)
-- adding DB migration, entity and repository for the user and roles => [MR](https://github.com/wikimatze/csv-user-sync/pull/2)
+- adding DB migration, entity and repository for user => [MR](https://github.com/wikimatze/csv-user-sync/pull/2)
+- adding DB migration, entity and repository for roles => [MR](https://github.com/wikimatze/csv-user-sync/pull/4)
 - adding generic filter for the parser => [MR](https://github.com/wikimatze/csv-user-sync/pull/3)
 
 
