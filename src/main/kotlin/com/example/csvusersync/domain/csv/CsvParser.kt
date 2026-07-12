@@ -1,5 +1,9 @@
-package com.example.csvusersync
+package com.example.csvusersync.domain.csv
 
+import com.example.csvusersync.domain.model.User
+import org.springframework.stereotype.Component
+
+@Component
 class CsvParser {
     fun parse(lines: List<String>): List<User> {
         require(lines.isNotEmpty()) {
@@ -15,17 +19,17 @@ class CsvParser {
             val parts = line.split(",")
 
             require(parts.size == 2) {
-                throw CsvParseException("expected 2 fields, but got ${parts.size}", line = index  + 2)
+                throw CsvParseException("expected 2 fields, but got ${parts.size}", line = index + 2)
             }
 
             val userId = parts[0]
             require(userId.isNotBlank()) {
-                throw CsvParseException("user_id is blank", line = index  + 2)
+                throw CsvParseException("user_id is blank", line = index + 2)
             }
 
             val mail = parts[1]
             require(mail.isNotBlank()) {
-                throw CsvParseException("mail is blank", line = index  + 2)
+                throw CsvParseException("mail is blank", line = index + 2)
             }
 
             User(userId, mail)

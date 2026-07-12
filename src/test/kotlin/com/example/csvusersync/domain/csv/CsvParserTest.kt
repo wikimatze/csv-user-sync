@@ -1,8 +1,7 @@
-package com.example.csvusersync
+package com.example.csvusersync.domain.csv
 
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
-
 import kotlin.io.path.createTempFile
 import kotlin.io.path.readLines
 import kotlin.io.path.writeText

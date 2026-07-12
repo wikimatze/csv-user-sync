@@ -1,0 +1,4 @@
+CREATE TABLE users (
+   user_id VARCHAR(255) PRIMARY KEY,
+   mail VARCHAR(255) NOT NULL
+);
