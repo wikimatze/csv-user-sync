@@ -1,10 +1,23 @@
 services:
   postgres:
     image: 'postgres:latest'
-    network_mode: host
+    network_mode: host  # For functional tests
     environment:
       - 'POSTGRES_DB=mydatabase'
       - 'POSTGRES_PASSWORD=secret'
       - 'POSTGRES_USER=myuser'
     ports:
       - '5432'
+
+  keycloak:
+    image: 'quay.io/keycloak/keycloak:25.0'
+    environment:
+      - 'KC_DB=dev-mem'  # Use dev-mem for testing without PostgreSQL
+      - 'KC_HTTP_ENABLED=true'
+      - 'KC_HOSTNAME_STRICT=false'
+      - 'KC_HOSTNAME_STRICT_HTTPS=false'
+      - 'KEYCLOAK_ADMIN=admin'
+      - 'KEYCLOAK_ADMIN_PASSWORD=admin'
+    command: start-dev
+    ports:
+      - '8180:8080'
