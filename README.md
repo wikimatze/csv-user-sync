@@ -40,6 +40,70 @@ that plugin and want to explore things on my own.
 - adding generic filter for the parser => [MR](https://github.com/wikimatze/csv-user-sync/pull/3)
 
 
+## Architecture
+
+As a mermaid diagram
+
+
+```mermaid
+flowchart LR
+
+    subgraph SAP["Bestehendes System"]
+        A["SAP"]
+        B["CSV-Export (täglich)"]
+        A --> B
+    end
+
+    subgraph Import["Import-Anwendung"]
+        C["CSV Parser"]
+        D["Validierung"]
+        E["Mapping"]
+        F["Persistierung"]
+        G["Logging?"]
+
+        C --> D --> E --> F --> G
+    end
+
+    subgraph DB["DB"]
+        H[(Users)]
+        I[(Roles)]
+        J[(Permissions)]
+    end
+
+    subgraph Auth["Zukünftige Authentifizierung"]
+        K["Keycloak<br/>oder Entra ID <br/>oder Okta"]
+    end
+
+    subgraph API["Modernisierte APIs"]
+        L["REST APIs"]
+        M["Banken / Anwendungen"]
+    end
+
+    B --> C
+    F --> H
+    F --> I
+    F --> J
+
+    H --> K
+    I --> K
+    J --> K
+
+    K -->|"OpenID Connect / OAuth2"| L
+    L --> M
+    
+
+    classDef sap fill:#f5f5f5,stroke:#666;
+    classDef poc fill:#d4edda,stroke:#2e7d32;
+    classDef db fill:#fff3cd,stroke:#f9a825;
+    classDef target fill:#dbeafe,stroke:#1565c0;
+
+    class A,B sap;
+    class C,D,E,F,G poc;
+    class H,I,J db;
+    class K,L,M target;
+
+```
+
 ## Useful commands
 
 - `./gradlew build` ... build and install all the dependencies
