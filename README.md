@@ -59,15 +59,13 @@ flowchart LR
         D["Validierung"]
         E["Mapping"]
         F["Persistierung"]
-        G["Logging?"]
 
-        C --> D --> E --> F --> G
+        C --> D --> E --> F
     end
 
     subgraph DB["DB"]
         H[(Users)]
-        I[(Roles)]
-        J[(Permissions)]
+        I[(Roles/Permissions)]
     end
 
     subgraph Auth["Zukünftige Authentifizierung"]
@@ -82,11 +80,9 @@ flowchart LR
     B --> C
     F --> H
     F --> I
-    F --> J
 
     H --> K
     I --> K
-    J --> K
 
     K -->|"OpenID Connect / OAuth2"| L
     L --> M
@@ -101,8 +97,8 @@ flowchart LR
     class C,D,E,F,G poc;
     class H,I,J db;
     class K,L,M target;
-
 ```
+
 
 ## Useful commands
 
